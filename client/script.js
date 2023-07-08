@@ -1,38 +1,42 @@
 function getAllTodos(){
+    var virtualDOM = [];
+
     fetch("http://localhost:3000/todos", {
         method: "GET"
     })
     .then(response => response.json())
-    .then(data => displayAllTodos1(data))
+    .then(data => {
+        data.map((d) => {
+            virtualDOM.push(d)
+        })
+    })
+    .then(() => displayAllTodos1())
     .catch(error => {
       console.error("An error occurred:", error);
     });
     
     // DOM manipulation started
-    function displayAllTodos1(data){
+    function displayAllTodos1(){
         var listElement = document.getElementById("list-container");
         // get the current children of the listElement and convert it into an array
         var currentChildren = Array.from(listElement.children);
 
-        let added = 0, deleted = 0, updated = 0;
-        
-        data.forEach((d) => {
+        virtualDOM.forEach((d) => {
+            console.log(d);
             // Check if the child with this id is already existing in the parent list
             var existingChild = currentChildren.find((child) => {
                 return child.dataset.id === String(d.id);
             });
 
             if(existingChild){
-                updated++;
                 existingChild.children[0].innerHTML = d.title;
                 existingChild.children[1].innerHTML = d.description;
+                existingChild.style.backGroundColor = d.backGroundColor;
                 currentChildren = currentChildren.filter((child) => {
                     return child !== existingChild;
                 })
             }
             else {
-                added++;
-                
                 var todoElement = document.createElement("div");
                 todoElement.dataset.id = d.id;
                 todoElement.classList.add("todo");
@@ -76,18 +80,15 @@ function getAllTodos(){
 
         // if any children exists in the currentChildren array are no longer needed. Hence needs to be removed
         currentChildren.forEach((child) => {
-            deleted++;
             listElement.removeChild(child);
         })
-        
-        console.log(added, updated, deleted);
     }
 }
 
 // reconciliation:
 window.setInterval(() => {
     getAllTodos();
-}, 5000);
+}, 1000);
 
 
 function addTodo(){
@@ -130,7 +131,6 @@ function doneTodo(id){
             description: existingTodo.description,
             backGroundColor: "rgb(92, 209, 119)"
         };
-        console.log(updatedTodo);
         fetch(`http://localhost:3000/todos/done/${id}`, {
             method: "PUT",
             body: JSON.stringify(updatedTodo),
@@ -144,12 +144,8 @@ function doneTodo(id){
             }
         })
         .catch(error => {
-        console.error("An error occurred:", error);
+            console.error("An error occurred:", error);
         })
-        // .finally(() => {
-        //     var disableDoneBtn = document.getElementById("doneBtn");
-        //     disableDoneBtn.disabled = true;
-        // });
     })   
     .catch(error => {
         console.error("An error occurred while fetching existing todo:", error);
