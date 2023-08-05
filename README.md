@@ -16,6 +16,8 @@ This is a simple TODO website.
 
 * [![html][HTML]][html-url]
 
+* [![js][JS]][js-url]
+
 * [![Express.js][Express.js]][Express-url]
 
 * [![Node.js][Node.js]][Node-url]
@@ -48,6 +50,9 @@ This is a simple TODO website.
 
 
 <!-- MARKDOWN LINKS -->
+[js]: https://img.shields.io/badge/js-E8D44D?style=for-the-badge&logo=js&logoColor=9FCC8D
+[js-url]: https://js.com/
+
 [css]: https://img.shields.io/badge/css-F193D4?style=for-the-badge&logo=css&logoColor=9FCC8D
 [css-url]: https://css.com/
 
