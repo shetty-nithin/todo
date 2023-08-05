@@ -21,10 +21,8 @@ This is a simple TODO website.
 * [![Node.js][Node.js]][Node-url]
 
 <br/>
-<br/>
 
 ## Installation
-<br/>
 
 1. Run the following command in the terminal to clone the repository
    ```sh
@@ -39,19 +37,19 @@ This is a simple TODO website.
    ```javascript
    npm start
 
-4. Open the folder "client" and right click on the index.html and click on "Open with Live Server".
+4. Open the folder "client" and right-click on the index.html and click on "Open with Live Server".
 
 <br/>
 
 ## Demo
-
+https://github.com/shetty-nithin/todo/assets/62413993/7e380399-d2fb-4cce-a918-51820ee0e0ba
 
 
 <!-- MARKDOWN LINKS -->
-[css]: https://img.shields.io/badge/css-F193D4?style=for-the-badge&logo=css&logoColor=9FCC8D
+[css]: https://img.shields.io/badge/css-2862E9?style=for-the-badge&logo=css&logoColor=9FCC8D
 [css-url]: https://css.com/
 
-[html]: https://img.shields.io/badge/html-D193D4?style=for-the-badge&logo=html&logoColor=4FCC8D
+[html]: https://img.shields.io/badge/html-DD4B25?style=for-the-badge&logo=html&logoColor=DD4B25
 [html-url]: https://html.com/
 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=0072b1
